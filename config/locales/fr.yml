@@ -1,0 +1,7 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+fr:
+  hide_on_expire: "Cacher le produit lorsqu'il est expiré"
+  prevent_buying_on_expire: "Désactiver l'achat lorsque le produit est expiré"
+  expiry_date: Date d'expiration
