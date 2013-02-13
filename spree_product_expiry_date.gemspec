@@ -3,13 +3,13 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_product_expiry_date'
   s.version     = '1.3.2'
-  s.summary     = 'TODO: Add gem summary here'
+  s.summary     = 'Add expiration dates to spree products'
   s.description = 'TODO: Add (optional) gem description here'
   s.required_ruby_version = '>= 1.8.7'
 
-  # s.author    = 'You'
-  # s.email     = 'you@example.com'
-  # s.homepage  = 'http://www.spreecommerce.com'
+  # s.author    = 'Johann Wilfrid-Calixte'
+  # s.email     = 'Johann@dotgee.fr'
+  # s.homepage  = 'http://dotgee.fr'
 
   #s.files       = `git ls-files`.split("\n")
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
