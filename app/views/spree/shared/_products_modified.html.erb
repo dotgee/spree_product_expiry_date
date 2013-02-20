@@ -1,12 +1,13 @@
 <% products.each do |product| %>
-  <% if product.on_display? && !(product.preferred_hide_on_expire && Time.now > product.expiry_date) %>
-    <li id="product_<%= product.id %>" class="columns three <%= cycle("alpha", "secondary", "", "omega secondary", :name => "classes") %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
-      <div class="product-image">
-        <%= link_to small_image(product, :itemprop => "image"), product, :itemprop => 'url' %>
+  <% if Spree::Config[:show_zero_stock_products] || product.has_stock? && !(product.preferred_hide_on_expire && Time.now > product.expiry_date) %>
+    <div class="media product <%= cycle("first", "last") %>" id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+      <div class="date">05/12/2012 - Paris</div>
+      <div class="pull-left">
+       <%= link_to small_image(product, :itemprop => "image", :class => "media-object"), product, :itemprop => 'url' %>
       </div>
-      <%= link_to truncate(product.name, :length => 50), product, :class => 'info', :itemprop => "name", :title => product.name %>
-      <span class="price selling" itemprop="price"><%= product.price_in(current_currency).display_price %></span>
-    </li>
+      <div class="media-body">
+        <h4 class="media-heading"><%= link_to product.name, product, :class => 'info', :itemprop => "name", :title => product.name %></h4>
+      </div>
+    </div>
   <% end %>
 <% end %>
-<% reset_cycle("classes") %>
