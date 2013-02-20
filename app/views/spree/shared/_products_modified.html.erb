@@ -1,13 +1,15 @@
-<% products.each do |product| %>
-  <% if Spree::Config[:show_zero_stock_products] || product.has_stock? && !(product.preferred_hide_on_expire && Time.now > product.expiry_date) %>
-    <div class="media product <%= cycle("first", "last") %>" id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
-      <div class="date">05/12/2012 - Paris</div>
-      <div class="pull-left">
-       <%= link_to small_image(product, :itemprop => "image", :class => "media-object"), product, :itemprop => 'url' %>
+<% if products.any? %>
+  <% products.each do |product| %>
+    <% if Spree::Config[:show_zero_stock_products] || product.has_stock? && !(product.preferred_hide_on_expire && Time.now > product.expiry_date) %>
+      <div class="media product <%= cycle("first", "last") %>" id="product_<%= product.id %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+        <div class="date">05/12/2012 - Paris</div>
+        <div class="pull-left">
+         <%= link_to small_image(product, :itemprop => "image", :class => "media-object"), product, :itemprop => 'url' %>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading"><%= link_to product.name, product, :class => 'info', :itemprop => "name", :title => product.name %></h4>
+        </div>
       </div>
-      <div class="media-body">
-        <h4 class="media-heading"><%= link_to product.name, product, :class => 'info', :itemprop => "name", :title => product.name %></h4>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 <% end %>
